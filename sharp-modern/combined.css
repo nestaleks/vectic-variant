@@ -156,7 +156,7 @@ html, body {
     border-bottom: var(--vect-border-width) solid var(--vect-gray-200);
     display: flex;
     flex-direction: row;
-    padding: var(--vect-spacing-4);
+    padding: 0;
     gap: var(--vect-spacing-4);
     align-items: center;
     flex-shrink: 0;
@@ -1203,7 +1203,7 @@ body.modal-open {
 }/* Categories Component Styles */
 
 .vect-categories-section {
-    padding: var(--vect-spacing-4);
+    padding: 0;
     border-right: var(--vect-border-width) solid var(--vect-gray-200);
     flex: 1;
     min-width: 200px;
@@ -1248,7 +1248,7 @@ body.modal-open {
 /* Categories and Search Container */
 .vect-categories-search-container {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex: 1;
     align-items: stretch;
 }
@@ -1276,6 +1276,7 @@ body.modal-open {
     width: 300px;
     flex-shrink: 0;
     min-width: 250px;
+    order: -1;
 }
 
 .vect-search-container {
