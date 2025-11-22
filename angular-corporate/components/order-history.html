@@ -1,0 +1,130 @@
+<div class="vect-order-history">
+    <div class="vect-order-history-header">
+        <h3>{{title}}</h3>
+        <div class="vect-order-count">{{orderCount}} orders</div>
+    </div>
+    
+    <div class="vect-order-history-content">
+        <!-- Left Column: Orders List -->
+        <div class="vect-order-history-left">
+            <div class="vect-orders-sidebar">
+                <div class="vect-orders-search">
+                    <input type="text" placeholder="Search orders..." class="vect-search-input" id="order-search">
+                </div>
+                <div class="vect-order-history-list" id="vect-order-history-list">
+                    {{orderItems}}
+                </div>
+            </div>
+        </div>
+        
+        <!-- Right Column: Order Details -->
+        <div class="vect-order-history-right">
+            <div class="vect-order-details-panel" id="order-details-panel">
+                <div class="vect-order-details-placeholder" id="order-details-placeholder">
+                    <div class="vect-placeholder-icon">📋</div>
+                    <h3>Select an Order</h3>
+                    <p>Choose an order from the list to view details</p>
+                </div>
+                
+                <div class="vect-order-details-content" id="order-details-content" style="display: none;">
+                    <div class="vect-order-details-header">
+                        <h3 id="order-details-title">Order #{{orderNumber}}</h3>
+                        <div class="vect-order-details-actions">
+                            <button class="vect-btn vect-btn-print" id="print-order-btn">
+                                🖨️ Print
+                            </button>
+                            <button class="vect-btn vect-btn-secondary" id="close-details-btn">
+                                ✕ Close
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="vect-order-details-info">
+                        <div class="vect-detail-group">
+                            <label>Order Date</label>
+                            <span id="order-details-date">{{orderDate}}</span>
+                        </div>
+                        <div class="vect-detail-group">
+                            <label>Customer</label>
+                            <span id="order-details-customer">{{customerName}}</span>
+                        </div>
+                        <div class="vect-detail-group">
+                            <label>Status</label>
+                            <span id="order-details-status" class="vect-status">{{orderStatus}}</span>
+                        </div>
+                        <div class="vect-detail-group">
+                            <label>Total</label>
+                            <span id="order-details-total" class="vect-order-total">{{orderTotal}}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="vect-order-items-detail">
+                        <h4>Order Items</h4>
+                        <div class="vect-items-list" id="order-details-items">
+                            {{orderItemsDetail}}
+                        </div>
+                    </div>
+                    
+                    <div class="vect-order-summary" id="order-details-summary">
+                        {{orderSummaryDetail}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Print Template (Hidden) -->
+<div id="print-template" style="display: none;">
+    <div class="print-order">
+        <div class="print-header">
+            <h1>{{businessName}}</h1>
+            <p>{{businessAddress}}</p>
+            <p>{{businessPhone}}</p>
+        </div>
+        
+        <div class="print-order-info">
+            <h2>Order #<span id="print-order-number"></span></h2>
+            <p><strong>Date:</strong> <span id="print-order-date"></span></p>
+            <p><strong>Customer:</strong> <span id="print-order-customer"></span></p>
+            <p><strong>Status:</strong> <span id="print-order-status"></span></p>
+        </div>
+        
+        <div class="print-items">
+            <h3>Items</h3>
+            <table class="print-items-table">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Qty</th>
+                        <th>Price</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+                <tbody id="print-items-body">
+                    <!-- Items will be inserted here -->
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="print-summary">
+            <div class="print-summary-row">
+                <span>Subtotal:</span>
+                <span id="print-subtotal"></span>
+            </div>
+            <div class="print-summary-row">
+                <span>Tax:</span>
+                <span id="print-tax"></span>
+            </div>
+            <div class="print-summary-row print-total">
+                <span><strong>Total:</strong></span>
+                <span id="print-total"></span>
+            </div>
+        </div>
+        
+        <div class="print-footer">
+            <p>Thank you for your business!</p>
+            <p>Printed on: <span id="print-timestamp"></span></p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,83 @@
+/* Order Tabs Component Styles */
+
+.vect-order-tabs {
+    display: flex;
+    background: var(--vect-white);
+    flex-direction: row;
+    flex-shrink: 0;
+    min-height: 40px;
+    border-radius: 6px;
+    border: 1px solid var(--vect-gray-200);
+    overflow: hidden;
+}
+
+.vect-order-tabs-list {
+    display: flex;
+    flex: 1;
+}
+
+.vect-order-tab {
+    padding: var(--vect-spacing-3) var(--vect-spacing-4);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: var(--vect-font-size-sm);
+    font-weight: 500;
+    color: var(--vect-gray-600);
+    border-left: 2px solid transparent;
+    transition: all 0.2s ease-in-out;
+    position: relative;
+    flex: 1;
+    text-align: center;
+}
+
+.vect-order-tab.active {
+    color: var(--vect-primary);
+    border-left-color: var(--vect-primary);
+    background: var(--vect-white);
+}
+
+.vect-order-tab-badge {
+    position: absolute;
+    top: var(--vect-spacing-2);
+    right: var(--vect-spacing-2);
+    background: var(--vect-primary);
+    color: var(--vect-white);
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-size: 10px;
+    font-weight: 600;
+    min-width: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Controls Context Specific Styles */
+.vect-controls .vect-order-tabs {
+    border-bottom: var(--vect-border-width) solid var(--vect-gray-200);
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .vect-order-tabs {
+        font-size: var(--vect-font-size-sm);
+    }
+    
+    .vect-order-tab {
+        padding: var(--vect-spacing-2) var(--vect-spacing-3);
+        font-size: var(--vect-font-size-xs);
+    }
+    
+    .vect-order-tab-badge {
+        font-size: 8px;
+        padding: 1px 4px;
+        min-width: 12px;
+        top: var(--vect-spacing-1);
+        right: var(--vect-spacing-1);
+    }
+}

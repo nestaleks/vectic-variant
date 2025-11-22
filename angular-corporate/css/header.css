@@ -1,0 +1,81 @@
+/* Header Component Styles */
+.vect-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--vect-spacing-4) var(--vect-spacing-6);
+    background: var(--vect-white);
+    border-bottom: var(--vect-border-width) solid var(--vect-gray-200);
+    box-shadow: var(--vect-shadow-sm);
+    flex-shrink: 0;
+}
+
+.vect-header-left {
+    display: flex;
+    align-items: center;
+    gap: var(--vect-spacing-4);
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.vect-logo {
+    font-size: var(--vect-font-size-xl);
+    font-weight: 700;
+    color: var(--vect-gray-900);
+}
+
+.vect-header-center {
+    flex: 1;
+    max-width: 500px;
+    margin: 0 var(--vect-spacing-8);
+}
+
+.vect-header-right {
+    display: flex;
+    align-items: center;
+    gap: var(--vect-spacing-4);
+}
+
+/* Order tabs in header context */
+.vect-header-center .vect-order-tabs {
+    border-bottom: none;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.vect-header-center .vect-order-tab {
+    border-left: none;
+    border-right: 1px solid var(--vect-gray-200);
+    padding: var(--vect-spacing-2) var(--vect-spacing-4);
+    font-size: var(--vect-font-size-sm);
+    text-align: center;
+}
+
+.vect-header-center .vect-order-tab:last-child {
+    border-right: none;
+}
+
+.vect-header-center .vect-order-tab.active {
+    background: var(--vect-primary);
+    color: white;
+}
+
+.vect-header-center .vect-order-tab-badge {
+    position: static;
+    margin-left: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.vect-header-center .vect-order-tab.active .vect-order-tab-badge {
+    background: white;
+    color: var(--vect-primary);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .vect-header-center .vect-order-tabs {
+        font-size: var(--vect-font-size-sm);
+    }
+}

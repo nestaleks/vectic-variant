@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simplified Vectis POS - HTML Components Version</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛒</text></svg>">
+    
+    <!-- Meta Tags -->
+    <meta name="description" content="Simplified Vectis POS - HTML Components Architecture">
+    <meta name="author" content="Vectis Team">
+    
+    <!-- Application Styles -->
+    <link rel="stylesheet" href="./combined.css">
+    
+    <!-- CSS Animations -->
+    <style>
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes slideOut {
+            from {
+                opacity: 1;
+                transform: translateX(0);
+            }
+            to {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+        }
+
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            z-index: 10000;
+            transition: opacity 0.5s ease-out;
+        }
+
+        .loading-screen.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .logo {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: pulse 2s infinite;
+        }
+
+        .app-name {
+            font-size: 3rem;
+            font-weight: 300;
+            margin: 0 0 0.5rem 0;
+        }
+
+        .app-tagline {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            margin: 0 0 2rem 0;
+            font-weight: 300;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-top: 3px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 1rem;
+        }
+
+        .version {
+            position: absolute;
+            bottom: 2rem;
+            font-size: 0.9rem;
+            opacity: 0.6;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #dc2626;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            z-index: 10000;
+        }
+
+        .retry-btn {
+            background: white;
+            color: #dc2626;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 1rem;
+            font-weight: 500;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading" class="loading-screen">
+        <div class="logo">🛒</div>
+        <h1 class="app-name">Simplified Vectis</h1>
+        <p class="app-tagline">HTML Components Architecture</p>
+        <div class="loading-spinner"></div>
+        <div class="version">v2.0.0-simplified</div>
+    </div>
+    
+    <!-- Error Screen -->
+    <div id="error" class="error-screen">
+        <h1>System Error</h1>
+        <p>Failed to load Simplified Vectis POS System. Please check your connection and try again.</p>
+        <button class="retry-btn" onclick="window.location.reload()">Retry</button>
+    </div>
+    
+    <!-- Main Application -->
+    <div id="app"></div>
+    
+    <!-- Application Script -->
+    <script type="module">
+        let app;
+        
+        async function initializeApp() {
+            try {
+                console.log('🚀 Starting Simplified Vectis POS System...');
+                console.log('Step 1: Importing main.js...');
+                
+                // Import and initialize the simplified app
+                const { default: VectisApp } = await import('./js/main.js');
+                console.log('✅ Step 1: main.js imported successfully');
+                console.log('Step 2: Creating VectisApp instance...');
+                
+                app = new VectisApp();
+                console.log('✅ Step 2: VectisApp instance created');
+                console.log('Step 3: Initializing app...');
+                
+                // Initialize the application
+                await app.init();
+                console.log('✅ Step 3: App initialized');
+                
+                // Hide loading screen
+                setTimeout(() => {
+                    console.log('Step 4: Hiding loading screen...');
+                    const loading = document.getElementById('loading');
+                    loading.classList.add('hidden');
+                    setTimeout(() => loading.remove(), 500);
+                }, 1000);
+                
+                console.log('✅ Simplified Vectis POS System loaded successfully');
+                
+            } catch (error) {
+                console.error('❌ Failed to initialize Simplified Vectis POS System:', error);
+                console.error('Error details:', error.message);
+                console.error('Stack trace:', error.stack);
+                
+                // Show error screen
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('error').style.display = 'flex';
+            }
+        }
+        
+        // Start the application
+        document.addEventListener('DOMContentLoaded', initializeApp);
+        
+        // Global error handling
+        window.addEventListener('error', (event) => {
+            console.error('Global error:', event.error);
+        });
+        
+        // Unhandled promise rejection handling
+        window.addEventListener('unhandledrejection', (event) => {
+            console.error('Unhandled promise rejection:', event.reason);
+        });
+        
+        // Expose app for debugging
+        window.simplifiedVectisApp = () => app;
+        
+        // Development utilities
+        window.devUtils = {
+            getState: () => app?.stateManager?.get(),
+            clearCart: () => app?.stateManager?.clearCart(),
+            checkButtons: () => {
+                const ordersItemsBtn = document.querySelector('.orders-items-btn');
+                const ordersListBtn = document.querySelector('.orders-list-btn');
+                console.log('Button check:', {
+                    ordersItemsBtn: !!ordersItemsBtn,
+                    ordersListBtn: !!ordersListBtn,
+                    ordersItemsAction: ordersItemsBtn?.dataset?.action,
+                    ordersListAction: ordersListBtn?.dataset?.action
+                });
+                if (ordersListBtn) {
+                    ordersListBtn.style.backgroundColor = 'red';
+                    ordersListBtn.style.border = '3px solid blue';
+                    console.log('✅ Orders List button highlighted');
+                }
+            },
+            testClick: () => {
+                const ordersListBtn = document.querySelector('.orders-list-btn');
+                if (ordersListBtn) {
+                    console.log('🖱️ Simulating click on Orders List button...');
+                    ordersListBtn.click();
+                } else {
+                    console.log('❌ Orders List button not found');
+                }
+            },
+            switchToOrdersList: () => {
+                console.log('🔧 MANUAL: Switching to Orders List');
+                const ordersBlock = document.getElementById('orders-items-block');
+                const historyBlock = document.getElementById('orders-list-block');
+                const ordersItemsBtn = document.querySelector('[data-action="orders-items"]');
+                const ordersListBtn = document.querySelector('[data-action="orders-list"]');
+                
+                if (ordersBlock) ordersBlock.style.display = 'none';
+                if (historyBlock) historyBlock.style.display = 'block';
+                if (ordersItemsBtn) ordersItemsBtn.classList.remove('active');
+                if (ordersListBtn) ordersListBtn.classList.add('active');
+                
+                console.log('✅ MANUAL: Orders List should be visible');
+            },
+            switchToOrdersItems: () => {
+                console.log('🔧 MANUAL: Switching to Orders Items');
+                const ordersBlock = document.getElementById('orders-items-block');
+                const historyBlock = document.getElementById('orders-list-block');
+                const ordersItemsBtn = document.querySelector('[data-action="orders-items"]');
+                const ordersListBtn = document.querySelector('[data-action="orders-list"]');
+                
+                if (ordersBlock) ordersBlock.style.display = 'flex';
+                if (historyBlock) historyBlock.style.display = 'none';
+                if (ordersItemsBtn) ordersItemsBtn.classList.add('active');
+                if (ordersListBtn) ordersListBtn.classList.remove('active');
+                
+                console.log('✅ MANUAL: Orders Items should be visible');
+            },
+            addSampleProducts: () => {
+                const products = [
+                    { id: 6, name: 'Chicken Wings', price: 9.50, category: 'appetizers', image: '🍗' },
+                    { id: 7, name: 'Greek Salad', price: 7.50, category: 'salad', image: '🥗' },
+                    { id: 8, name: 'Lemonade', price: 3.00, category: 'beverages', image: '🍋' }
+                ];
+                const currentProducts = app?.stateManager?.get('products') || [];
+                app?.stateManager?.set('products', [...currentProducts, ...products]);
+                console.log('Sample products added');
+            }
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,303 @@
+/* Order History Component Styles */
+
+.vect-order {
+    display: flex;
+    height: calc(100vh - 70px);
+    width: 100%;
+}
+
+.vect-orders-history {
+    width: 100%;
+    height: calc(100vh - 70px);
+    overflow: auto;
+}
+
+.vect-orders-history .vect-content.full-width {
+    width: 100%;
+    max-width: none;
+    padding: 20px;
+}
+
+.vect-order-history {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #ffffff;
+    min-height: 100vh;
+}
+
+.vect-order-history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.vect-order-history-list {
+    background: white;
+    border-radius: 12px;
+    border: 1px solid #e5e5e5;
+    overflow-y: auto;
+    flex: 1;
+    margin-bottom: 1rem;
+}
+
+.vect-order-item {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 12px;
+    transition: transform 0.1s ease;
+}
+
+.vect-order-item:active {
+    transform: scale(0.99);
+}
+
+.vect-order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.vect-order-id {
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #1f2937;
+}
+
+.vect-order-date {
+    font-size: 0.75rem;
+    color: #525252;
+}
+
+.vect-order-customer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.vect-order-total {
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: #059669;
+}
+
+.vect-order-details {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 8px;
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+.vect-order-items {
+    font-size: 0.75rem;
+    color: #525252;
+}
+
+.vect-order-items-preview {
+    font-size: 0.875rem;
+    color: #4b5563;
+}
+
+.vect-order-item-name {
+    background: #f3f4f6;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-right: 4px;
+}
+
+.vect-order-status {
+    display: flex;
+    justify-content: center;
+}
+
+.vect-order-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+/* Order History Filters */
+.vect-order-history-filters {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: #fafafa;
+    border-radius: 8px;
+    flex-wrap: wrap;
+}
+
+/* Order History Stats */
+.vect-order-history-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+/* Split-screen layout for order history */
+.vect-order-history-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    height: calc(100vh - 400px);
+    min-height: 500px;
+}
+
+.vect-order-history-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.vect-order-history-right {
+    background: #f9f9f9;
+    border-radius: 12px;
+    border: 1px solid #e5e5e5;
+    overflow: hidden;
+}
+
+.vect-order-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto auto;
+    gap: 1rem;
+    padding: 1rem;
+    border-bottom: 1px solid #f0f0f0;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.vect-order-row.selected {
+    background: #eff6ff;
+    border-left: 4px solid #3b82f6;
+}
+
+.vect-order-row:last-child {
+    border-bottom: none;
+}
+
+.vect-order-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+/* Order Details Panel Styles */
+.vect-order-details-panel {
+    padding: 1.5rem;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.vect-order-details-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+    color: #6b7280;
+}
+
+.vect-order-details-content {
+    height: 100%;
+}
+
+.vect-order-details-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.vect-order-details-header h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #171717;
+    margin: 0;
+}
+
+.vect-order-details-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.vect-order-details-info .vect-detail-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.vect-order-details-info .vect-detail-group label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #6b7280;
+    text-transform: uppercase;
+}
+
+.vect-order-details-info .vect-detail-group span {
+    font-size: 0.875rem;
+    color: #171717;
+}
+
+.vect-order-items-detail h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #171717;
+    margin-bottom: 1rem;
+}
+
+.vect-order-summary {
+    border-top: 1px solid #e5e5e5;
+    padding-top: 1rem;
+}
+
+.vect-summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    font-size: 0.875rem;
+}
+
+.vect-order-history-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .vect-order-history {
+        padding: 1rem;
+    }
+    
+    .vect-order-history-content {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        height: auto;
+        min-height: auto;
+    }
+    
+    .vect-order-row {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+        padding: 0.75rem;
+    }
+    
+    .vect-order-details-info {
+        grid-template-columns: 1fr;
+    }
+}

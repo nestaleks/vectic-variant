@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vectis POS - Design Variants Preview</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+        
+        .preview-container {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        
+        .preview-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .preview-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .preview-subtitle {
+            font-size: 1.25rem;
+            color: #4a5568;
+            font-weight: 400;
+        }
+        
+        .variants-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .variant-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 3px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .variant-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent 0%, rgba(0, 0, 0, 0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .variant-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        }
+        
+        .variant-card:hover::before {
+            opacity: 1;
+        }
+        
+        .variant-card.original {
+            border-color: #20B2AA;
+        }
+        
+        .variant-card.angular {
+            border-color: #1a365d;
+        }
+        
+        .variant-card.sharp {
+            border-color: #00d9ff;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            color: white;
+        }
+        
+        .variant-icon {
+            font-size: 4rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+        }
+        
+        .variant-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            text-align: center;
+        }
+        
+        .variant-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .variant-card.sharp .variant-description {
+            color: #cccccc;
+        }
+        
+        .variant-specs {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .variant-card.sharp .variant-specs {
+            background: rgba(255, 255, 255, 0.1);
+            color: #cccccc;
+        }
+        
+        .variant-launch-btn {
+            width: 100%;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .variant-card.original .variant-launch-btn {
+            background: #20B2AA;
+            color: white;
+        }
+        
+        .variant-card.original .variant-launch-btn:hover {
+            background: #1A9A94;
+            transform: translateY(-2px);
+        }
+        
+        .variant-card.angular .variant-launch-btn {
+            background: #1a365d;
+            color: white;
+        }
+        
+        .variant-card.angular .variant-launch-btn:hover {
+            background: #2d5a87;
+            transform: translateY(-2px);
+        }
+        
+        .variant-card.sharp .variant-launch-btn {
+            background: linear-gradient(135deg, #00d9ff 0%, #0099cc 100%);
+            color: #000;
+            font-weight: 700;
+        }
+        
+        .variant-card.sharp .variant-launch-btn:hover {
+            background: linear-gradient(135deg, #33e0ff 0%, #00b8e6 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.4);
+        }
+        
+        .footer {
+            text-align: center;
+            color: #4a5568;
+            font-size: 0.9rem;
+            margin-top: 2rem;
+        }
+        
+        .footer a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+    </style>
+    <link rel="icon" href="data:,">
+</head>
+<body>
+    <div class="preview-container">
+        <div class="preview-header">
+            <h1 class="preview-title">🛒 Vectis POS</h1>
+            <p class="preview-subtitle">Choose your preferred design variant</p>
+        </div>
+        
+        <div class="variants-grid">
+            <div class="variant-card original" onclick="openVariant('original')">
+                <div class="variant-icon">🏪</div>
+                <h3 class="variant-title">Original Design</h3>
+                <p class="variant-description">
+                    Clean and modern interface with balanced colors and smooth interactions. 
+                    Perfect for standard desktop displays.
+                </p>
+                <div class="variant-specs">
+                    <strong>Optimized for:</strong> General use<br>
+                    <strong>Screen:</strong> All resolutions<br>
+                    <strong>Style:</strong> Modern with rounded corners<br>
+                    <strong>Colors:</strong> Teal and gray palette
+                </div>
+                <button class="variant-launch-btn">Launch Original</button>
+            </div>
+            
+            <div class="variant-card angular" onclick="openVariant('angular-corporate')">
+                <div class="variant-icon">🏢</div>
+                <h3 class="variant-title">Angular Corporate</h3>
+                <p class="variant-description">
+                    Professional corporate design with sharp, angular elements. 
+                    Zero border radius for touchscreen efficiency.
+                </p>
+                <div class="variant-specs">
+                    <strong>Optimized for:</strong> 1366x768 touchscreens<br>
+                    <strong>Screen:</strong> Corporate displays<br>
+                    <strong>Style:</strong> Angular, no rounded corners<br>
+                    <strong>Colors:</strong> Corporate blue and red
+                </div>
+                <button class="variant-launch-btn">Launch Corporate</button>
+            </div>
+            
+            <div class="variant-card sharp" onclick="openVariant('sharp-modern')">
+                <div class="variant-icon">⚡</div>
+                <h3 class="variant-title">Sharp Modern</h3>
+                <p class="variant-description">
+                    High-tech dark theme with neon accents and modern gradients. 
+                    Gaming-inspired design for large displays.
+                </p>
+                <div class="variant-specs">
+                    <strong>Optimized for:</strong> 1920x1080 touchscreens<br>
+                    <strong>Screen:</strong> High-resolution displays<br>
+                    <strong>Style:</strong> Angular with neon effects<br>
+                    <strong>Colors:</strong> Dark theme with cyan accents
+                </div>
+                <button class="variant-launch-btn">Launch Modern</button>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Built with ❤️ by <a href="#" target="_blank">Vectis Team</a></p>
+        </div>
+    </div>
+
+    <script>
+        function openVariant(variant) {
+            console.log(`Opening ${variant} variant...`);
+            
+            // Add loading animation to the clicked card
+            const cards = document.querySelectorAll('.variant-card');
+            cards.forEach(card => {
+                if (card.onclick.toString().includes(variant)) {
+                    const btn = card.querySelector('.variant-launch-btn');
+                    btn.textContent = 'Loading...';
+                    btn.style.opacity = '0.7';
+                }
+            });
+            
+            // Open the variant in a new tab
+            setTimeout(() => {
+                window.open(`./${variant}/index.html`, '_blank');
+                
+                // Reset button after delay
+                setTimeout(() => {
+                    const cards = document.querySelectorAll('.variant-card');
+                    cards.forEach(card => {
+                        if (card.onclick.toString().includes(variant)) {
+                            const btn = card.querySelector('.variant-launch-btn');
+                            btn.style.opacity = '1';
+                            
+                            if (variant === 'original') btn.textContent = 'Launch Original';
+                            else if (variant === 'angular-corporate') btn.textContent = 'Launch Corporate';
+                            else if (variant === 'sharp-modern') btn.textContent = 'Launch Modern';
+                        }
+                    });
+                }, 1000);
+            }, 500);
+        }
+        
+        // Add keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.key === '1') openVariant('original');
+            else if (e.key === '2') openVariant('angular-corporate');
+            else if (e.key === '3') openVariant('sharp-modern');
+        });
+        
+        // Add some interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.variant-card');
+            
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px) scale(1.02)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = '';
+                });
+                
+                card.addEventListener('click', function() {
+                    const btn = this.querySelector('.variant-launch-btn');
+                    btn.style.transform = 'scale(0.98)';
+                    setTimeout(() => btn.style.transform = '', 150);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

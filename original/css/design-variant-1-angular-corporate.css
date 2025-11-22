@@ -1,0 +1,620 @@
+/* 
+   Design Variant 1: Angular Corporate
+   Optimized for: 1366x768 touchscreen displays
+   Design Philosophy: Sharp, professional, corporate-friendly
+   - Zero border radius (completely angular)
+   - High contrast for readability
+   - Larger touch targets (min 44px)
+   - Corporate color scheme
+   - Efficient space usage for smaller screens
+*/
+
+/* Root Variables - Angular Corporate Theme */
+:root {
+    /* Corporate Color Palette */
+    --angular-primary: #1a365d !important;
+    --angular-primary-hover: #2c5282 !important;
+    --angular-secondary: #2d3748 !important;
+    --angular-accent: #e53e3e !important;
+    --angular-success: #38a169 !important;
+    --angular-warning: #ed8936 !important;
+    --angular-error: #e53e3e !important;
+    
+    /* Neutral Grays */
+    --angular-white: #ffffff !important;
+    --angular-gray-50: #f7fafc !important;
+    --angular-gray-100: #edf2f7 !important;
+    --angular-gray-200: #e2e8f0 !important;
+    --angular-gray-300: #cbd5e0 !important;
+    --angular-gray-400: #a0aec0 !important;
+    --angular-gray-500: #718096 !important;
+    --angular-gray-600: #4a5568 !important;
+    --angular-gray-700: #2d3748 !important;
+    --angular-gray-800: #1a202c !important;
+    --angular-gray-900: #171923 !important;
+    
+    /* Touch Targets */
+    --angular-touch-min: 44px !important;
+    --angular-touch-comfortable: 52px !important;
+    --angular-touch-large: 60px !important;
+}
+
+/* Global Angular Override - Remove ALL border radius */
+* {
+    border-radius: 0 !important;
+}
+
+/* Body and Main Container */
+body {
+    background: var(--angular-gray-100) !important;
+    color: var(--angular-gray-900) !important;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif !important;
+}
+
+.pos-layout.vect-theme {
+    background: var(--angular-gray-100) !important;
+    height: 100vh !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+/* Header - Angular Corporate Style */
+.vect-header {
+    background: var(--angular-primary) !important;
+    color: var(--angular-white) !important;
+    height: 70px !important;
+    border-bottom: 3px solid var(--angular-accent) !important;
+    padding: 0 24px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+.vect-header .vect-logo,
+.vect-header h1 {
+    font-size: 24px !important;
+    font-weight: 700 !important;
+    letter-spacing: -0.5px !important;
+    text-transform: uppercase !important;
+    color: var(--angular-white) !important;
+}
+
+.vect-header-buttons,
+.vect-header-actions {
+    display: flex !important;
+    gap: 12px !important;
+}
+
+/* Main Content Layout */
+.vect-main {
+    flex: 1 !important;
+    display: flex !important;
+    height: calc(100vh - 70px) !important;
+    overflow: hidden !important;
+}
+
+/* Order Creation Block */
+.vect-order {
+    display: flex !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Content Area */
+.vect-content {
+    flex: 1 !important;
+    background: var(--angular-white) !important;
+    padding: 20px !important;
+    overflow-y: auto !important;
+    border-right: 2px solid var(--angular-gray-300) !important;
+}
+
+/* Controls Section */
+.vect-controls {
+    margin-bottom: 20px !important;
+    background: var(--angular-gray-50) !important;
+    padding: 16px !important;
+    border: 2px solid var(--angular-gray-300) !important;
+}
+
+.vect-categories-search-container {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+}
+
+/* Categories - Angular Corporate */
+.vect-categories {
+    display: flex !important;
+    gap: 8px !important;
+    flex-wrap: wrap !important;
+}
+
+.vect-category-item {
+    background: var(--angular-gray-200) !important;
+    color: var(--angular-gray-700) !important;
+    border: 2px solid var(--angular-gray-300) !important;
+    padding: 12px 20px !important;
+    cursor: pointer !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    font-size: 14px !important;
+    min-height: var(--angular-touch-min) !important;
+    min-width: var(--angular-touch-large) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    transition: all 0.2s ease !important;
+}
+
+.vect-category-item:hover {
+    background: var(--angular-primary-hover) !important;
+    color: var(--angular-white) !important;
+    border-color: var(--angular-primary-hover) !important;
+}
+
+.vect-category-item.active {
+    background: var(--angular-primary) !important;
+    color: var(--angular-white) !important;
+    border-color: var(--angular-accent) !important;
+    box-shadow: inset 4px 0 0 var(--angular-accent) !important;
+}
+
+/* Search */
+.vect-search {
+    position: relative !important;
+}
+
+.vect-search-input {
+    width: 100% !important;
+    padding: 12px 16px !important;
+    border: 2px solid var(--angular-gray-300) !important;
+    background: var(--angular-white) !important;
+    font-size: 16px !important;
+    color: var(--angular-gray-900) !important;
+    min-height: var(--angular-touch-min) !important;
+}
+
+.vect-search-input:focus {
+    border-color: var(--angular-primary) !important;
+    outline: none !important;
+    box-shadow: 0 0 0 2px rgba(26, 54, 93, 0.2) !important;
+}
+
+/* Products Grid */
+.vect-products-section {
+    flex: 1 !important;
+}
+
+.vect-products-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+    gap: 16px !important;
+}
+
+.vect-product-card {
+    background: var(--angular-white) !important;
+    border: 2px solid var(--angular-gray-300) !important;
+    padding: 16px !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    min-height: 160px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+}
+
+.vect-product-card:hover {
+    border-color: var(--angular-primary) !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) !important;
+    transform: translateY(-1px) !important;
+}
+
+.vect-product-card:active {
+    transform: translateY(0) !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12) !important;
+}
+
+.vect-product-image {
+    font-size: 42px !important;
+    text-align: center !important;
+    margin-bottom: 12px !important;
+}
+
+.vect-product-name {
+    font-weight: 600 !important;
+    font-size: 16px !important;
+    color: var(--angular-gray-900) !important;
+    margin-bottom: 8px !important;
+    text-align: center !important;
+}
+
+.vect-product-price {
+    font-weight: 700 !important;
+    color: var(--angular-primary) !important;
+    font-size: 20px !important;
+    text-align: center !important;
+}
+
+/* Sidebar - Cart */
+.vect-sidebar {
+    width: 420px !important;
+    background: var(--angular-gray-50) !important;
+    border-left: 3px solid var(--angular-primary) !important;
+    height: 100% !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+}
+
+/* Cart Header */
+.vect-cart-header {
+    background: var(--angular-primary) !important;
+    color: var(--angular-white) !important;
+    padding: 16px !important;
+    font-weight: 600 !important;
+    font-size: 20px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    border-bottom: 3px solid var(--angular-accent) !important;
+}
+
+.vect-cart-count {
+    background: var(--angular-accent) !important;
+    color: var(--angular-white) !important;
+    padding: 4px 8px !important;
+    margin-left: 8px !important;
+    font-size: 12px !important;
+    font-weight: 600 !important;
+}
+
+/* Cart Items */
+.vect-cart-items {
+    flex: 1 !important;
+    overflow-y: auto !important;
+    padding: 12px !important;
+    background: var(--angular-white) !important;
+}
+
+.vect-cart-item {
+    background: var(--angular-gray-50) !important;
+    border: 2px solid var(--angular-gray-300) !important;
+    margin-bottom: 12px !important;
+    padding: 16px !important;
+}
+
+.vect-cart-item.customizable {
+    border-left: 4px solid var(--angular-primary) !important;
+    background: var(--angular-gray-50) !important;
+}
+
+/* Cart Item Rows */
+.vect-cart-item-row-1 {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 12px !important;
+    margin-bottom: 8px !important;
+}
+
+.vect-cart-item-main-info {
+    flex: 1 !important;
+    min-width: 0 !important;
+}
+
+.vect-cart-item-name {
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: var(--angular-gray-900) !important;
+    margin-bottom: 4px !important;
+}
+
+.vect-cart-item-price {
+    font-size: 14px !important;
+    color: var(--angular-gray-600) !important;
+}
+
+.vect-cart-item-total {
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: var(--angular-success) !important;
+    margin-top: 4px !important;
+}
+
+.vect-cart-item-controls {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    flex-shrink: 0 !important;
+}
+
+.vect-cart-item-quantity {
+    display: flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+}
+
+/* Buttons */
+.vect-quantity-btn,
+.vect-btn {
+    background: var(--angular-primary) !important;
+    color: var(--angular-white) !important;
+    border: 2px solid var(--angular-primary) !important;
+    padding: 8px 12px !important;
+    cursor: pointer !important;
+    font-weight: 600 !important;
+    font-size: 16px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    transition: all 0.2s ease !important;
+    min-height: var(--angular-touch-min) !important;
+    min-width: var(--angular-touch-min) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.vect-quantity-btn:hover,
+.vect-btn:hover {
+    background: var(--angular-primary-hover) !important;
+    border-color: var(--angular-primary-hover) !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+.vect-quantity-btn:active,
+.vect-btn:active {
+    transform: translateY(0) !important;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12) !important;
+}
+
+.vect-quantity-btn:disabled,
+.vect-btn:disabled {
+    background: var(--angular-gray-400) !important;
+    border-color: var(--angular-gray-400) !important;
+    color: var(--angular-gray-600) !important;
+    cursor: not-allowed !important;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+.vect-quantity-value {
+    background: var(--angular-white) !important;
+    border: 2px solid var(--angular-gray-400) !important;
+    width: 50px !important;
+    height: var(--angular-touch-min) !important;
+    text-align: center !important;
+    font-weight: 600 !important;
+    font-size: 16px !important;
+    color: var(--angular-gray-700) !important;
+}
+
+.vect-quantity-value:focus {
+    border-color: var(--angular-primary) !important;
+    outline: none !important;
+    box-shadow: 0 0 0 2px rgba(26, 54, 93, 0.2) !important;
+}
+
+.vect-remove-item {
+    background: var(--angular-error) !important;
+    border-color: var(--angular-error) !important;
+}
+
+/* Size Selection */
+.vect-cart-item-row-2 {
+    margin: 8px 0 !important;
+}
+
+.vect-size-selection {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+}
+
+.vect-size-label {
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    color: var(--angular-gray-600) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+.vect-size-options {
+    display: flex !important;
+    gap: 8px !important;
+}
+
+.vect-size-option {
+    flex: 1 !important;
+    background: var(--angular-gray-100) !important;
+    border: 2px solid var(--angular-gray-300) !important;
+    color: var(--angular-gray-600) !important;
+    padding: 8px 12px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    transition: all 0.2s ease !important;
+    min-height: var(--angular-touch-min) !important;
+    cursor: pointer !important;
+    text-align: center !important;
+}
+
+.vect-size-option:hover {
+    border-color: var(--angular-primary) !important;
+    color: var(--angular-primary) !important;
+}
+
+.vect-size-option.selected {
+    background: var(--angular-primary) !important;
+    border-color: var(--angular-primary) !important;
+    color: var(--angular-white) !important;
+    box-shadow: inset 0 0 0 2px var(--angular-accent) !important;
+}
+
+/* Extra Ingredients */
+.vect-cart-item-row-3 {
+    margin-top: 8px !important;
+}
+
+.vect-selected-extras {
+    background: var(--angular-gray-50) !important;
+    border-left: 2px solid var(--angular-success) !important;
+    margin-bottom: 8px !important;
+    overflow: hidden !important;
+}
+
+.vect-selected-extras-label {
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    color: var(--angular-gray-600) !important;
+    padding: 8px 12px !important;
+    background: var(--angular-gray-100) !important;
+    border-bottom: 1px solid var(--angular-gray-200) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+.vect-selected-extras-list {
+    padding: 8px 12px !important;
+}
+
+.vect-selected-extra-item {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 4px 0 !important;
+    font-size: 14px !important;
+}
+
+/* Cart Summary */
+.vect-cart-summary {
+    background: var(--angular-gray-100) !important;
+    border-top: 3px solid var(--angular-primary) !important;
+    padding: 16px !important;
+}
+
+.vect-summary-line {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 4px 0 !important;
+    font-size: 16px !important;
+}
+
+.vect-summary-line.total {
+    border-top: 1px solid var(--angular-gray-300) !important;
+    margin-top: 8px !important;
+    padding-top: 12px !important;
+    font-weight: 700 !important;
+    font-size: 18px !important;
+    color: var(--angular-success) !important;
+}
+
+/* Order Actions */
+.vect-order-actions {
+    background: var(--angular-primary) !important;
+    padding: 16px !important;
+    border-top: 3px solid var(--angular-accent) !important;
+    display: flex !important;
+    gap: 8px !important;
+}
+
+.vect-confirm-order-btn {
+    flex: 1 !important;
+    background: var(--angular-success) !important;
+    border-color: var(--angular-success) !important;
+}
+
+/* Order History */
+.vect-orders-history {
+    width: 100% !important;
+    height: calc(100vh - 70px) !important;
+    overflow: hidden !important;
+}
+
+.vect-order-history {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+    background: var(--angular-white) !important;
+}
+
+.vect-order-history-header {
+    background: var(--angular-primary) !important;
+    color: var(--angular-white) !important;
+    padding: 16px 24px !important;
+    border-bottom: 3px solid var(--angular-accent) !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+}
+
+.vect-order-history-header h3 {
+    font-size: 24px !important;
+    font-weight: 600 !important;
+    color: var(--angular-white) !important;
+    margin: 0 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+.vect-order-count {
+    background: var(--angular-accent) !important;
+    color: var(--angular-white) !important;
+    padding: 8px 16px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+}
+
+/* Empty States */
+.vect-empty-state {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 48px 24px !important;
+    text-align: center !important;
+    color: var(--angular-gray-500) !important;
+    height: 300px !important;
+}
+
+.vect-empty-icon {
+    font-size: 64px !important;
+    margin-bottom: 16px !important;
+    opacity: 0.5 !important;
+}
+
+.vect-empty-title {
+    font-size: 20px !important;
+    font-weight: 600 !important;
+    color: var(--angular-gray-700) !important;
+    margin-bottom: 8px !important;
+}
+
+.vect-empty-description {
+    font-size: 16px !important;
+    color: var(--angular-gray-500) !important;
+}
+
+/* Responsive for 1366x768 */
+@media (max-width: 1400px) {
+    .vect-sidebar {
+        width: 380px !important;
+    }
+    
+    .vect-products-grid {
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)) !important;
+        gap: 12px !important;
+    }
+    
+    .vect-content {
+        padding: 16px !important;
+    }
+    
+    .vect-categories {
+        gap: 4px !important;
+    }
+}

@@ -1,0 +1,13 @@
+/* Main Styles File - Imports all component styles */
+
+/* Import global styles first */
+@import url('./css/global.css');
+
+/* Import component styles */
+@import url('./css/header.css');
+@import url('./css/cart.css');
+@import url('./css/categories.css');
+@import url('./css/search.css');
+@import url('./css/products-grid.css');
+@import url('./css/order-tabs.css');
+@import url('./css/order-history.css');

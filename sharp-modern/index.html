@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sharp Modern - Vectis POS</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Application Styles -->
+    <link rel="stylesheet" href="./combined.css">
+    
+    <!-- Sharp Modern Design Overrides -->
+    <style>
+        /* SHARP MODERN DESIGN VARIANT - Dark Theme with Neon Accents */
+        
+        /* Global Override - Remove ALL border radius */
+        * {
+            border-radius: 0 !important;
+        }
+        
+        /* Modern Dark Color Palette */
+        :root {
+            --sharp-primary: #00d9ff !important;
+            --sharp-secondary: #ff6b35 !important;
+            --sharp-accent: #00ff88 !important;
+            --sharp-bg: #0a0a0a !important;
+            --sharp-bg-secondary: #1a1a1a !important;
+            --sharp-surface: #1e1e1e !important;
+            --sharp-text: #ffffff !important;
+            --sharp-text-muted: #cccccc !important;
+        }
+        
+        /* Body and Main Layout */
+        body {
+            margin: 0 !important;
+            padding: 0 !important;
+            background: var(--sharp-bg) !important;
+            color: var(--sharp-text) !important;
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif !important;
+            font-size: 16px !important;
+            overflow: hidden !important;
+        }
+        
+        .pos-layout.vect-theme {
+            background: linear-gradient(135deg, var(--sharp-bg) 0%, var(--sharp-bg-secondary) 100%) !important;
+            height: 100vh !important;
+        }
+        
+        /* Header */
+        .vect-header {
+            background: linear-gradient(135deg, var(--sharp-primary) 0%, #0099cc 100%) !important;
+            color: #000 !important;
+            height: 70px !important;
+            border-bottom: 2px solid var(--sharp-primary) !important;
+            box-shadow: 0 8px 32px rgba(0, 217, 255, 0.2) !important;
+        }
+        
+        .vect-header h1 {
+            color: #000 !important;
+            font-weight: 800 !important;
+            font-size: 28px !important;
+            font-family: 'Inter', sans-serif !important;
+            text-transform: uppercase !important;
+        }
+        
+        /* Content Area */
+        .vect-content {
+            background: var(--sharp-bg-secondary) !important;
+            padding: 40px !important;
+            border-right: 2px solid var(--sharp-primary) !important;
+        }
+        
+        /* Categories */
+        .vect-category-item {
+            background: var(--sharp-surface) !important;
+            color: var(--sharp-text-muted) !important;
+            border: 2px solid var(--sharp-primary) !important;
+            padding: 16px 24px !important;
+            font-weight: 600 !important;
+            font-size: 16px !important;
+            min-height: 48px !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1px !important;
+            transition: all 0.3s ease !important;
+            position: relative !important;
+            overflow: hidden !important;
+        }
+        
+        .vect-category-item:hover {
+            color: var(--sharp-primary) !important;
+            box-shadow: 0 0 24px rgba(0, 217, 255, 0.3) !important;
+            transform: translateY(-2px) !important;
+        }
+        
+        .vect-category-item.active {
+            background: linear-gradient(135deg, var(--sharp-primary) 0%, #0099cc 100%) !important;
+            color: #000 !important;
+            border-color: var(--sharp-secondary) !important;
+            box-shadow: 0 0 24px rgba(0, 217, 255, 0.3) !important;
+        }
+        
+        /* Product Cards */
+        .vect-product-card {
+            background: linear-gradient(135deg, var(--sharp-surface) 0%, #2a2a2a 100%) !important;
+            border: 2px solid var(--sharp-primary) !important;
+            padding: 24px !important;
+            min-height: 200px !important;
+            transition: all 0.3s ease !important;
+            position: relative !important;
+            overflow: hidden !important;
+        }
+        
+        .vect-product-card:hover {
+            border-color: var(--sharp-primary) !important;
+            box-shadow: 0 0 24px rgba(0, 217, 255, 0.3) !important;
+            transform: translateY(-4px) scale(1.02) !important;
+        }
+        
+        .vect-product-image {
+            font-size: 60px !important;
+            text-align: center !important;
+            margin-bottom: 16px !important;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3)) !important;
+        }
+        
+        .vect-product-name {
+            font-weight: 600 !important;
+            font-size: 18px !important;
+            color: var(--sharp-text) !important;
+            margin-bottom: 12px !important;
+            text-align: center !important;
+            text-transform: uppercase !important;
+        }
+        
+        .vect-product-price {
+            font-weight: 800 !important;
+            color: var(--sharp-primary) !important;
+            font-size: 24px !important;
+            text-align: center !important;
+            font-family: 'Fira Code', monospace !important;
+            text-shadow: 0 0 8px rgba(0, 217, 255, 0.5) !important;
+        }
+        
+        /* Sidebar Cart */
+        .vect-sidebar {
+            width: 450px !important;
+            background: linear-gradient(135deg, var(--sharp-surface) 0%, #2a2a2a 100%) !important;
+            border-left: 3px solid var(--sharp-primary) !important;
+            box-shadow: 0 8px 32px rgba(0, 217, 255, 0.2) !important;
+        }
+        
+        .vect-cart-header {
+            background: linear-gradient(135deg, var(--sharp-primary) 0%, #0099cc 100%) !important;
+            color: #000 !important;
+            padding: 20px !important;
+            font-weight: 700 !important;
+            font-size: 24px !important;
+            text-transform: uppercase !important;
+            border-bottom: 3px solid var(--sharp-secondary) !important;
+        }
+        
+        .vect-cart-count {
+            background: var(--sharp-secondary) !important;
+            color: #000 !important;
+            padding: 8px 12px !important;
+            font-weight: 600 !important;
+        }
+        
+        /* Cart Items */
+        .vect-cart-items {
+            background: var(--sharp-bg-secondary) !important;
+            padding: 16px !important;
+        }
+        
+        .vect-cart-item {
+            background: var(--sharp-surface) !important;
+            border: 2px solid var(--sharp-primary) !important;
+            margin-bottom: 16px !important;
+            padding: 20px !important;
+            transition: all 0.3s ease !important;
+        }
+        
+        .vect-cart-item:hover {
+            box-shadow: 0 4px 16px rgba(0, 217, 255, 0.15) !important;
+        }
+        
+        .vect-cart-item-name {
+            color: var(--sharp-text) !important;
+            font-weight: 600 !important;
+            text-transform: uppercase !important;
+        }
+        
+        .vect-cart-item-price {
+            color: var(--sharp-text-muted) !important;
+        }
+        
+        .vect-cart-item-total {
+            color: var(--sharp-accent) !important;
+            font-weight: 600 !important;
+            font-family: 'Fira Code', monospace !important;
+        }
+        
+        /* Buttons */
+        .vect-btn,
+        .vect-quantity-btn {
+            background: linear-gradient(135deg, var(--sharp-primary) 0%, #0099cc 100%) !important;
+            color: #000 !important;
+            border: 2px solid var(--sharp-primary) !important;
+            padding: 12px 16px !important;
+            font-weight: 700 !important;
+            font-size: 16px !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1px !important;
+            min-height: 48px !important;
+            min-width: 48px !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+        }
+        
+        .vect-btn:hover,
+        .vect-quantity-btn:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 0 24px rgba(0, 217, 255, 0.3) !important;
+            border-color: var(--sharp-secondary) !important;
+        }
+        
+        .vect-quantity-value {
+            background: var(--sharp-surface) !important;
+            border: 2px solid var(--sharp-primary) !important;
+            color: var(--sharp-text) !important;
+            width: 70px !important;
+            height: 48px !important;
+            text-align: center !important;
+            font-weight: 600 !important;
+            font-family: 'Fira Code', monospace !important;
+        }
+        
+        /* Search */
+        .vect-search-input {
+            background: var(--sharp-surface) !important;
+            border: 2px solid var(--sharp-primary) !important;
+            color: var(--sharp-text) !important;
+            padding: 16px 20px !important;
+            font-size: 16px !important;
+            min-height: 48px !important;
+        }
+        
+        .vect-search-input:focus {
+            border-color: var(--sharp-primary) !important;
+            outline: none !important;
+            box-shadow: 0 0 24px rgba(0, 217, 255, 0.3) !important;
+        }
+        
+        /* Cart Summary */
+        .vect-cart-summary {
+            background: #2a2a2a !important;
+            border-top: 3px solid var(--sharp-primary) !important;
+            padding: 20px !important;
+            box-shadow: 0 8px 32px rgba(0, 217, 255, 0.2) !important;
+        }
+        
+        .vect-summary-line {
+            color: var(--sharp-text) !important;
+            font-size: 16px !important;
+        }
+        
+        .vect-summary-line.total {
+            color: var(--sharp-accent) !important;
+            font-weight: 700 !important;
+            font-size: 20px !important;
+            font-family: 'Fira Code', monospace !important;
+        }
+        
+        /* Order Actions */
+        .vect-order-actions {
+            background: linear-gradient(135deg, var(--sharp-primary) 0%, #0099cc 100%) !important;
+            padding: 20px !important;
+            border-top: 3px solid var(--sharp-secondary) !important;
+            display: flex !important;
+            gap: 16px !important;
+        }
+        
+        .vect-clear-btn {
+            background: linear-gradient(135deg, #ff4757 0%, #cc0000 100%) !important;
+            border-color: #ff4757 !important;
+            color: #000 !important;
+            flex: 1 !important;
+            font-weight: 700 !important;
+            text-transform: uppercase !important;
+            transition: all 0.3s ease !important;
+        }
+        
+        .vect-clear-btn:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 0 24px rgba(255, 71, 87, 0.5) !important;
+        }
+        
+        .vect-checkout-btn,
+        .vect-confirm-order-btn {
+            background: linear-gradient(135deg, var(--sharp-accent) 0%, #00cc70 100%) !important;
+            border-color: var(--sharp-accent) !important;
+            color: #000 !important;
+            flex: 2 !important;
+            font-weight: 700 !important;
+            text-transform: uppercase !important;
+            transition: all 0.3s ease !important;
+        }
+        
+        .vect-checkout-btn:hover,
+        .vect-confirm-order-btn:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 0 24px rgba(0, 255, 136, 0.5) !important;
+        }
+        
+        .vect-clear-btn:disabled,
+        .vect-checkout-btn:disabled {
+            background: #2a2a2a !important;
+            border-color: #666 !important;
+            color: #666 !important;
+            cursor: not-allowed !important;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+        
+        /* Scrollbars */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--sharp-bg-secondary);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, var(--sharp-primary) 0%, #0099cc 100%);
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading" class="loading-screen">
+        <div class="logo">⚡</div>
+        <h1 class="app-name">Sharp Modern</h1>
+        <p class="app-tagline">High-Tech Design for Large Displays</p>
+        <div class="loading-spinner"></div>
+        <div class="version">v2.0.0-modern</div>
+    </div>
+    
+    <!-- Main Application -->
+    <div id="app"></div>
+
+    <!-- Application Script -->
+    <script type="module">
+        let app;
+        
+        async function initializeApp() {
+            try {
+                console.log('⚡ Starting Sharp Modern Design Variant...');
+                console.log('🖥️ Optimized for 1920x1080 touchscreen displays');
+                
+                const { default: VectisApp } = await import('./js/main.js');
+                app = new VectisApp();
+                await app.init();
+                
+                console.log('✅ Sharp Modern variant loaded successfully!');
+                
+                // Hide loading screen
+                document.getElementById('loading').style.display = 'none';
+                
+                // Add some interactive modern effects
+                setTimeout(() => {
+                    const cards = document.querySelectorAll('.vect-product-card');
+                    cards.forEach(card => {
+                        card.addEventListener('mouseenter', function() {
+                            this.style.filter = 'hue-rotate(15deg)';
+                        });
+                        card.addEventListener('mouseleave', function() {
+                            this.style.filter = 'none';
+                        });
+                    });
+                }, 1000);
+                
+            } catch (error) {
+                console.error('❌ Failed to initialize Sharp Modern variant:', error);
+                document.getElementById('loading').style.display = 'none';
+            }
+        }
+        
+        // Initialize when DOM is loaded
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeApp);
+        } else {
+            initializeApp();
+        }
+        
+        // Global error handler
+        window.addEventListener('error', (event) => {
+            console.error('Global error in Sharp Modern variant:', event.error);
+        });
+    </script>
+</body>
+</html>

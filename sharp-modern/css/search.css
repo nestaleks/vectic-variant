@@ -1,0 +1,104 @@
+/* Search Component Styles */
+
+.vect-search-section {
+    padding: var(--vect-spacing-4);
+    width: 300px;
+    flex-shrink: 0;
+    min-width: 250px;
+}
+
+.vect-search-container {
+    position: relative;
+}
+
+.vect-search-input {
+    width: 100%;
+    padding: var(--vect-spacing-3) var(--vect-spacing-4);
+    padding-left: var(--vect-spacing-12);
+    border: var(--vect-border-width) solid var(--vect-gray-300);
+    border-radius: var(--vect-border-radius);
+    font-size: var(--vect-font-size-base);
+    background: var(--vect-gray-50);
+    transition: all 0.2s ease-in-out;
+}
+
+.vect-search-input:focus {
+    outline: none;
+    border-color: var(--vect-primary);
+    background: var(--vect-white);
+    box-shadow: 0 0 0 3px rgb(32 178 170 / 0.1);
+}
+
+.vect-search-icon {
+    position: absolute;
+    left: var(--vect-spacing-4);
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--vect-gray-400);
+}
+
+.vect-search-clear {
+    position: absolute;
+    right: var(--vect-spacing-2);
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--vect-gray-400);
+    cursor: pointer;
+    font-size: var(--vect-font-size-sm);
+    padding: var(--vect-spacing-1);
+    border-radius: var(--vect-border-radius);
+    transition: all 0.2s ease-in-out;
+}
+
+.vect-search-clear:hover {
+    background: var(--vect-gray-100);
+    color: var(--vect-gray-600);
+}
+
+.vect-search-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    flex-grow: 1;
+}
+
+/* Controls Context Specific Styles */
+.vect-controls .vect-search-container {
+    position: relative;
+}
+
+.vect-controls .vect-search-input {
+    background: var(--vect-white);
+    border-color: var(--vect-gray-200);
+}
+
+.vect-controls .vect-search-input:focus {
+    border-color: var(--vect-primary);
+    background: var(--vect-white);
+    box-shadow: 0 0 0 3px rgb(32 178 170 / 0.1);
+}
+
+.vect-controls .vect-search-icon {
+    color: var(--vect-gray-500);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .vect-search-section {
+        width: 100%;
+        min-width: auto;
+        padding: var(--vect-spacing-2);
+    }
+    
+    .vect-search-input {
+        font-size: var(--vect-font-size-sm);
+        padding: var(--vect-spacing-2) var(--vect-spacing-3);
+        padding-left: var(--vect-spacing-10);
+    }
+    
+    .vect-search-icon {
+        left: var(--vect-spacing-3);
+    }
+}

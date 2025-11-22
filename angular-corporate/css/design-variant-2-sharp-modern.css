@@ -1,0 +1,814 @@
+/* 
+   Design Variant 2: Sharp Modern
+   Optimized for: 1920x1080 touchscreen displays  
+   Design Philosophy: Sharp, modern, high-tech aesthetic
+   - Zero border radius (completely angular)
+   - Dark theme with neon accents
+   - Spacious layout for larger screens
+   - Modern color gradients and shadows
+   - Gaming/tech-inspired design
+*/
+
+/* Root Variables - Sharp Modern Theme */
+:root {
+    /* Modern Dark Palette */
+    --sharp-primary: #00d9ff !important;
+    --sharp-primary-hover: #33e0ff !important;
+    --sharp-primary-dark: #0099cc !important;
+    --sharp-secondary: #ff6b35 !important;
+    --sharp-accent: #00ff88 !important;
+    --sharp-success: #00ff88 !important;
+    --sharp-warning: #ffaa00 !important;
+    --sharp-error: #ff4757 !important;
+    --sharp-info: #3742fa !important;
+    
+    /* Dark Theme Colors */
+    --sharp-bg-primary: #0a0a0a !important;
+    --sharp-bg-secondary: #1a1a1a !important;
+    --sharp-bg-tertiary: #2a2a2a !important;
+    --sharp-surface: #1e1e1e !important;
+    --sharp-surface-hover: #333333 !important;
+    
+    /* Text Colors */
+    --sharp-text-primary: #ffffff !important;
+    --sharp-text-secondary: #cccccc !important;
+    --sharp-text-muted: #999999 !important;
+    --sharp-text-inverse: #000000 !important;
+    
+    /* Touch Targets - Larger for high-res displays */
+    --sharp-touch-min: 48px !important;
+    --sharp-touch-comfortable: 56px !important;
+    --sharp-touch-large: 64px !important;
+    --sharp-touch-xl: 80px !important;
+}
+
+/* Global Angular Override - Remove ALL border radius */
+* {
+    border-radius: 0 !important;
+}
+
+/* Body and Main Container */
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+    background: var(--sharp-bg-primary) !important;
+    color: var(--sharp-text-primary) !important;
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif !important;
+    font-size: 18px !important;
+    line-height: 1.6 !important;
+    overflow: hidden !important;
+    font-weight: 400 !important;
+}
+
+.pos-layout.vect-theme {
+    background: linear-gradient(135deg, var(--sharp-bg-primary) 0%, var(--sharp-bg-secondary) 100%) !important;
+    height: 100vh !important;
+    display: flex !important;
+    flex-direction: column !important;
+    position: relative !important;
+}
+
+.pos-layout.vect-theme::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: 
+        radial-gradient(circle at 25% 25%, rgba(0, 217, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(255, 107, 53, 0.1) 0%, transparent 50%) !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+}
+
+/* Header - Sharp Modern Design */
+.vect-header {
+    background: linear-gradient(135deg, var(--sharp-primary) 0%, var(--sharp-primary-dark) 100%) !important;
+    color: var(--sharp-text-inverse) !important;
+    height: 80px !important;
+    border-bottom: 2px solid var(--sharp-primary) !important;
+    padding: 0 48px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    box-shadow: 0 8px 32px rgba(0, 217, 255, 0.2) !important;
+    position: relative !important;
+    z-index: 100 !important;
+}
+
+.vect-header .vect-logo,
+.vect-header h1 {
+    font-size: 36px !important;
+    font-weight: 800 !important;
+    letter-spacing: -1px !important;
+    font-family: 'Fira Code', 'Consolas', monospace !important;
+    text-transform: uppercase !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+    color: var(--sharp-text-inverse) !important;
+}
+
+.vect-header-buttons,
+.vect-header-actions {
+    display: flex !important;
+    gap: 16px !important;
+}
+
+/* Main Content Layout */
+.vect-main {
+    flex: 1 !important;
+    display: flex !important;
+    height: calc(100vh - 80px) !important;
+    overflow: hidden !important;
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+/* Order Creation Block */
+.vect-order {
+    display: flex !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Content Area */
+.vect-content {
+    flex: 1 !important;
+    background: var(--sharp-bg-secondary) !important;
+    padding: 48px !important;
+    overflow-y: auto !important;
+    border-right: 2px solid var(--sharp-primary) !important;
+    position: relative !important;
+}
+
+/* Controls Section */
+.vect-controls {
+    margin-bottom: 48px !important;
+    background: var(--sharp-bg-tertiary) !important;
+    padding: 24px !important;
+    border: 2px solid var(--sharp-primary) !important;
+    box-shadow: 0 4px 16px rgba(0, 217, 255, 0.15) !important;
+}
+
+.vect-categories-search-container {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 24px !important;
+}
+
+/* Categories - Sharp Modern */
+.vect-categories {
+    display: flex !important;
+    gap: 16px !important;
+    flex-wrap: wrap !important;
+}
+
+.vect-category-item {
+    background: var(--sharp-surface) !important;
+    color: var(--sharp-text-secondary) !important;
+    border: 2px solid var(--sharp-primary) !important;
+    padding: 16px 24px !important;
+    cursor: pointer !important;
+    font-weight: 600 !important;
+    font-size: 18px !important;
+    min-height: var(--sharp-touch-comfortable) !important;
+    min-width: var(--sharp-touch-xl) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    position: relative !important;
+    overflow: hidden !important;
+    transition: all 0.3s ease !important;
+}
+
+.vect-category-item::before {
+    content: '' !important;
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 0 !important;
+    background: linear-gradient(135deg, var(--sharp-primary) 0%, var(--sharp-primary-dark) 100%) !important;
+    transition: height 0.3s ease !important;
+}
+
+.vect-category-item:hover {
+    color: var(--sharp-primary) !important;
+    border-color: var(--sharp-primary) !important;
+    box-shadow: 0 0 24px rgba(0, 217, 255, 0.3) !important;
+    transform: translateY(-2px) !important;
+}
+
+.vect-category-item:hover::before {
+    height: 4px !important;
+}
+
+.vect-category-item.active {
+    background: linear-gradient(135deg, var(--sharp-primary) 0%, var(--sharp-primary-dark) 100%) !important;
+    color: var(--sharp-text-inverse) !important;
+    border-color: var(--sharp-secondary) !important;
+    box-shadow: 0 0 24px rgba(0, 217, 255, 0.3) !important;
+    font-weight: 700 !important;
+}
+
+.vect-category-item.active::before {
+    height: 4px !important;
+    background: var(--sharp-secondary) !important;
+}
+
+/* Search */
+.vect-search {
+    position: relative !important;
+}
+
+.vect-search-input {
+    width: 100% !important;
+    padding: 16px 20px !important;
+    border: 2px solid var(--sharp-primary) !important;
+    background: var(--sharp-surface) !important;
+    color: var(--sharp-text-primary) !important;
+    font-size: 18px !important;
+    min-height: var(--sharp-touch-comfortable) !important;
+    transition: all 0.3s ease !important;
+    font-family: 'Inter', 'Segoe UI', system-ui, sans-serif !important;
+}
+
+.vect-search-input:focus {
+    border-color: var(--sharp-primary) !important;
+    outline: none !important;
+    box-shadow: 0 0 24px rgba(0, 217, 255, 0.3) !important;
+    background: var(--sharp-surface-hover) !important;
+}
+
+/* Products Grid */
+.vect-products-section {
+    flex: 1 !important;
+}
+
+.vect-products-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+    gap: 24px !important;
+}
+
+.vect-product-card {
+    background: linear-gradient(135deg, var(--sharp-surface) 0%, var(--sharp-bg-tertiary) 100%) !important;
+    border: 2px solid var(--sharp-primary) !important;
+    padding: 24px !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    min-height: 220px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.vect-product-card::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: -100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: linear-gradient(90deg, transparent, rgba(0, 217, 255, 0.1), transparent) !important;
+    transition: left 0.5s ease !important;
+}
+
+.vect-product-card:hover {
+    border-color: var(--sharp-primary) !important;
+    box-shadow: 0 0 24px rgba(0, 217, 255, 0.3) !important;
+    transform: translateY(-4px) scale(1.02) !important;
+    background: var(--sharp-surface) !important;
+}
+
+.vect-product-card:hover::before {
+    left: 100% !important;
+}
+
+.vect-product-card:active {
+    transform: translateY(-2px) scale(1.01) !important;
+    box-shadow: 0 4px 16px rgba(0, 217, 255, 0.15) !important;
+}
+
+.vect-product-image {
+    font-size: 64px !important;
+    text-align: center !important;
+    margin-bottom: 16px !important;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3)) !important;
+}
+
+.vect-product-name {
+    font-weight: 600 !important;
+    font-size: 22px !important;
+    color: var(--sharp-text-primary) !important;
+    margin-bottom: 12px !important;
+    text-align: center !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+.vect-product-price {
+    font-weight: 800 !important;
+    color: var(--sharp-primary) !important;
+    font-size: 28px !important;
+    text-align: center !important;
+    font-family: 'Fira Code', 'Consolas', monospace !important;
+    text-shadow: 0 0 8px rgba(0, 217, 255, 0.5) !important;
+}
+
+/* Sidebar - Cart */
+.vect-sidebar {
+    width: 480px !important;
+    background: linear-gradient(135deg, var(--sharp-surface) 0%, var(--sharp-bg-tertiary) 100%) !important;
+    border-left: 3px solid var(--sharp-primary) !important;
+    height: 100% !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+    box-shadow: 0 8px 32px rgba(0, 217, 255, 0.2) !important;
+    position: relative !important;
+    z-index: 10 !important;
+}
+
+/* Cart Header */
+.vect-cart-header {
+    background: linear-gradient(135deg, var(--sharp-primary) 0%, var(--sharp-primary-dark) 100%) !important;
+    color: var(--sharp-text-inverse) !important;
+    padding: 20px !important;
+    font-weight: 700 !important;
+    font-size: 28px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    border-bottom: 3px solid var(--sharp-secondary) !important;
+    box-shadow: 0 4px 16px rgba(0, 217, 255, 0.15) !important;
+}
+
+.vect-cart-count {
+    background: var(--sharp-secondary) !important;
+    color: var(--sharp-text-inverse) !important;
+    padding: 8px 12px !important;
+    margin-left: 12px !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+}
+
+/* Cart Items */
+.vect-cart-items {
+    flex: 1 !important;
+    overflow-y: auto !important;
+    padding: 16px !important;
+    background: var(--sharp-bg-secondary) !important;
+}
+
+.vect-cart-item {
+    background: var(--sharp-surface) !important;
+    border: 2px solid var(--sharp-primary) !important;
+    margin-bottom: 16px !important;
+    padding: 20px !important;
+    transition: all 0.3s ease !important;
+    position: relative !important;
+}
+
+.vect-cart-item::before {
+    content: '' !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    width: 0 !important;
+    background: linear-gradient(135deg, var(--sharp-primary) 0%, var(--sharp-primary-dark) 100%) !important;
+    transition: width 0.3s ease !important;
+}
+
+.vect-cart-item:hover {
+    border-color: var(--sharp-primary) !important;
+    box-shadow: 0 4px 16px rgba(0, 217, 255, 0.15) !important;
+}
+
+.vect-cart-item:hover::before {
+    width: 4px !important;
+}
+
+.vect-cart-item.customizable {
+    border-left: 4px solid var(--sharp-accent) !important;
+    background: linear-gradient(135deg, var(--sharp-surface) 0%, rgba(0, 255, 136, 0.05) 100%) !important;
+}
+
+/* Cart Item Rows */
+.vect-cart-item-row-1 {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    gap: 16px !important;
+    margin-bottom: 12px !important;
+}
+
+.vect-cart-item-main-info {
+    flex: 1 !important;
+    min-width: 0 !important;
+}
+
+.vect-cart-item-name {
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    color: var(--sharp-text-primary) !important;
+    margin-bottom: 6px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+
+.vect-cart-item-price {
+    font-size: 16px !important;
+    color: var(--sharp-text-secondary) !important;
+}
+
+.vect-cart-item-total {
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    color: var(--sharp-success) !important;
+    margin-top: 6px !important;
+    font-family: 'Fira Code', 'Consolas', monospace !important;
+}
+
+.vect-cart-item-controls {
+    display: flex !important;
+    align-items: center !important;
+    gap: 16px !important;
+    flex-shrink: 0 !important;
+}
+
+.vect-cart-item-quantity {
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+}
+
+/* Buttons - Sharp Modern Style */
+.vect-quantity-btn,
+.vect-btn {
+    background: linear-gradient(135deg, var(--sharp-primary) 0%, var(--sharp-primary-dark) 100%) !important;
+    color: var(--sharp-text-inverse) !important;
+    border: 2px solid var(--sharp-primary) !important;
+    padding: 12px 16px !important;
+    cursor: pointer !important;
+    font-weight: 700 !important;
+    font-size: 18px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    transition: all 0.3s ease !important;
+    min-height: var(--sharp-touch-comfortable) !important;
+    min-width: var(--sharp-touch-comfortable) !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.vect-quantity-btn::before,
+.vect-btn::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: -100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent) !important;
+    transition: left 0.5s ease !important;
+}
+
+.vect-quantity-btn:hover,
+.vect-btn:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 0 24px rgba(0, 217, 255, 0.3) !important;
+    border-color: var(--sharp-secondary) !important;
+}
+
+.vect-quantity-btn:hover::before,
+.vect-btn:hover::before {
+    left: 100% !important;
+}
+
+.vect-quantity-btn:active,
+.vect-btn:active {
+    transform: translateY(0) !important;
+    box-shadow: 0 4px 16px rgba(0, 217, 255, 0.15) !important;
+}
+
+.vect-quantity-btn:disabled,
+.vect-btn:disabled {
+    background: var(--sharp-bg-tertiary) !important;
+    border-color: var(--sharp-text-muted) !important;
+    color: var(--sharp-text-muted) !important;
+    cursor: not-allowed !important;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+.vect-quantity-value {
+    background: var(--sharp-surface) !important;
+    border: 2px solid var(--sharp-primary) !important;
+    color: var(--sharp-text-primary) !important;
+    width: 80px !important;
+    height: var(--sharp-touch-comfortable) !important;
+    text-align: center !important;
+    font-weight: 600 !important;
+    font-size: 18px !important;
+    font-family: 'Fira Code', 'Consolas', monospace !important;
+    transition: all 0.3s ease !important;
+}
+
+.vect-quantity-value:focus {
+    border-color: var(--sharp-primary) !important;
+    outline: none !important;
+    box-shadow: 0 0 24px rgba(0, 217, 255, 0.3) !important;
+    background: var(--sharp-surface-hover) !important;
+}
+
+.vect-remove-item {
+    background: linear-gradient(135deg, var(--sharp-error) 0%, #cc0000 100%) !important;
+    border-color: var(--sharp-error) !important;
+    box-shadow: 0 4px 16px rgba(255, 71, 87, 0.3) !important;
+}
+
+/* Size Selection */
+.vect-cart-item-row-2 {
+    margin: 12px 0 !important;
+}
+
+.vect-size-selection {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+}
+
+.vect-size-label {
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: var(--sharp-text-secondary) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+}
+
+.vect-size-options {
+    display: flex !important;
+    gap: 12px !important;
+}
+
+.vect-size-option {
+    flex: 1 !important;
+    background: var(--sharp-surface) !important;
+    border: 2px solid var(--sharp-primary) !important;
+    color: var(--sharp-text-secondary) !important;
+    padding: 12px 16px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    transition: all 0.3s ease !important;
+    min-height: var(--sharp-touch-comfortable) !important;
+    cursor: pointer !important;
+    text-align: center !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.vect-size-option::before {
+    content: '' !important;
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 0 !important;
+    background: linear-gradient(135deg, var(--sharp-primary) 0%, var(--sharp-primary-dark) 100%) !important;
+    transition: height 0.3s ease !important;
+}
+
+.vect-size-option:hover {
+    border-color: var(--sharp-primary) !important;
+    color: var(--sharp-primary) !important;
+    box-shadow: 0 4px 16px rgba(0, 217, 255, 0.15) !important;
+}
+
+.vect-size-option:hover::before {
+    height: 4px !important;
+}
+
+.vect-size-option.selected {
+    background: linear-gradient(135deg, var(--sharp-primary) 0%, var(--sharp-primary-dark) 100%) !important;
+    border-color: var(--sharp-secondary) !important;
+    color: var(--sharp-text-inverse) !important;
+    box-shadow: 0 0 24px rgba(0, 217, 255, 0.3) !important;
+    font-weight: 700 !important;
+}
+
+.vect-size-option.selected::before {
+    height: 4px !important;
+    background: var(--sharp-secondary) !important;
+}
+
+/* Extra Ingredients */
+.vect-cart-item-row-3 {
+    margin-top: 12px !important;
+}
+
+.vect-selected-extras {
+    background: var(--sharp-bg-tertiary) !important;
+    border-left: 2px solid var(--sharp-accent) !important;
+    margin-bottom: 12px !important;
+    overflow: hidden !important;
+    box-shadow: 0 2px 8px rgba(0, 255, 136, 0.1) !important;
+}
+
+.vect-selected-extras-label {
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: var(--sharp-text-secondary) !important;
+    padding: 12px 16px !important;
+    background: var(--sharp-surface) !important;
+    border-bottom: 1px solid var(--sharp-primary) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+}
+
+.vect-selected-extras-list {
+    padding: 12px 16px !important;
+}
+
+.vect-selected-extra-item {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 6px 0 !important;
+    font-size: 16px !important;
+}
+
+/* Cart Summary */
+.vect-cart-summary {
+    background: var(--sharp-bg-tertiary) !important;
+    border-top: 3px solid var(--sharp-primary) !important;
+    padding: 20px !important;
+    box-shadow: 0 8px 32px rgba(0, 217, 255, 0.2) !important;
+}
+
+.vect-summary-line {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 6px 0 !important;
+    font-size: 18px !important;
+    color: var(--sharp-text-primary) !important;
+}
+
+.vect-summary-line.total {
+    border-top: 1px solid var(--sharp-primary) !important;
+    margin-top: 12px !important;
+    padding-top: 16px !important;
+    font-weight: 700 !important;
+    font-size: 22px !important;
+    color: var(--sharp-success) !important;
+    font-family: 'Fira Code', 'Consolas', monospace !important;
+}
+
+/* Order Actions */
+.vect-order-actions {
+    background: linear-gradient(135deg, var(--sharp-primary) 0%, var(--sharp-primary-dark) 100%) !important;
+    padding: 20px !important;
+    border-top: 3px solid var(--sharp-secondary) !important;
+    box-shadow: 0 8px 32px rgba(0, 217, 255, 0.2) !important;
+    display: flex !important;
+    gap: 12px !important;
+}
+
+.vect-confirm-order-btn {
+    flex: 1 !important;
+    background: linear-gradient(135deg, var(--sharp-success) 0%, #00cc70 100%) !important;
+    border-color: var(--sharp-success) !important;
+    box-shadow: 0 4px 16px rgba(0, 255, 136, 0.3) !important;
+}
+
+/* Order History */
+.vect-orders-history {
+    width: 100% !important;
+    height: calc(100vh - 80px) !important;
+    overflow: hidden !important;
+    background: var(--sharp-bg-secondary) !important;
+}
+
+.vect-order-history {
+    display: flex !important;
+    flex-direction: column !important;
+    height: 100% !important;
+    background: var(--sharp-bg-secondary) !important;
+}
+
+.vect-order-history-header {
+    background: linear-gradient(135deg, var(--sharp-primary) 0%, var(--sharp-primary-dark) 100%) !important;
+    color: var(--sharp-text-inverse) !important;
+    padding: 20px 32px !important;
+    border-bottom: 3px solid var(--sharp-secondary) !important;
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    box-shadow: 0 4px 16px rgba(0, 217, 255, 0.15) !important;
+}
+
+.vect-order-history-header h3 {
+    font-size: 32px !important;
+    font-weight: 600 !important;
+    color: var(--sharp-text-inverse) !important;
+    margin: 0 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    font-family: 'Fira Code', 'Consolas', monospace !important;
+}
+
+.vect-order-count {
+    background: var(--sharp-secondary) !important;
+    color: var(--sharp-text-inverse) !important;
+    padding: 12px 20px !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+}
+
+/* Empty States */
+.vect-empty-state {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 64px 32px !important;
+    text-align: center !important;
+    color: var(--sharp-text-muted) !important;
+    height: 400px !important;
+}
+
+.vect-empty-icon {
+    font-size: 80px !important;
+    margin-bottom: 20px !important;
+    opacity: 0.5 !important;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3)) !important;
+}
+
+.vect-empty-title {
+    font-size: 28px !important;
+    font-weight: 600 !important;
+    color: var(--sharp-text-secondary) !important;
+    margin-bottom: 12px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+}
+
+.vect-empty-description {
+    font-size: 18px !important;
+    color: var(--sharp-text-muted) !important;
+}
+
+/* Scrollbars - Sharp Modern */
+::-webkit-scrollbar {
+    width: 12px !important;
+    height: 12px !important;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--sharp-bg-secondary) !important;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, var(--sharp-primary) 0%, var(--sharp-primary-dark) 100%) !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, var(--sharp-secondary) 0%, var(--sharp-error) 100%) !important;
+}
+
+/* Loading States */
+.loading {
+    animation: pulse 2s infinite !important;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.7; }
+    100% { opacity: 1; }
+}
+
+/* Responsive for 1920x1080 */
+@media (min-width: 1920px) {
+    .vect-sidebar {
+        width: 520px !important;
+    }
+    
+    .vect-products-grid {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+        gap: 32px !important;
+    }
+    
+    .vect-content {
+        padding: 64px !important;
+    }
+}

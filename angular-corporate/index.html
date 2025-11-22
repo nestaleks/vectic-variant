@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angular Corporate - Vectis POS</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛒</text></svg>">
+    
+    <!-- Application Styles -->
+    <link rel="stylesheet" href="./combined.css">
+    
+    <!-- Angular Corporate Design Overrides -->
+    <style>
+        /* ANGULAR CORPORATE DESIGN VARIANT - Zero Border Radius Design */
+        
+        /* Global Override - Remove ALL border radius */
+        * {
+            border-radius: 0 !important;
+        }
+        
+        /* Corporate Color Palette */
+        :root {
+            --corp-primary: #1a365d !important;
+            --corp-secondary: #e53e3e !important;
+            --corp-accent: #2d3748 !important;
+            --corp-bg: #f7fafc !important;
+            --corp-surface: #edf2f7 !important;
+            --corp-text: #2d3748 !important;
+            --corp-text-light: #4a5568 !important;
+        }
+        
+        /* Body and Main Layout */
+        body {
+            background: var(--corp-bg) !important;
+            color: var(--corp-text) !important;
+            font-family: 'Segoe UI', system-ui, sans-serif !important;
+        }
+        
+        .pos-layout.vect-theme {
+            background: var(--corp-bg) !important;
+            height: 100vh !important;
+        }
+        
+        /* Header */
+        .vect-header {
+            background: var(--corp-primary) !important;
+            color: white !important;
+            height: 64px !important;
+            border-bottom: 3px solid var(--corp-secondary) !important;
+            box-shadow: 0 4px 8px rgba(26, 54, 93, 0.1) !important;
+        }
+        
+        .vect-header h1 {
+            color: white !important;
+            font-weight: 600 !important;
+            font-size: 24px !important;
+        }
+        
+        /* Content Area */
+        .vect-content {
+            background: var(--corp-bg) !important;
+            padding: 5px !important;
+        }
+        
+        /* Categories */
+        .vect-category-item {
+            background: white !important;
+            border: 2px solid var(--corp-primary) !important;
+            color: var(--corp-primary) !important;
+            padding: 12px 20px !important;
+            font-weight: 600 !important;
+            min-height: 44px !important;
+            transition: all 0.2s ease !important;
+        }
+        
+        .vect-category-item:hover {
+            background: var(--corp-surface) !important;
+            transform: translateY(-1px) !important;
+        }
+        
+        .vect-category-item.active {
+            background: var(--corp-primary) !important;
+            color: white !important;
+        }
+        
+        /* Product Cards */
+        .vect-product-card {
+            background: white !important;
+            border: 2px solid var(--corp-primary) !important;
+            padding: 20px !important;
+            transition: all 0.2s ease !important;
+            box-shadow: 0 2px 4px rgba(26, 54, 93, 0.1) !important;
+        }
+        
+        .vect-product-card:hover {
+            border-color: var(--corp-secondary) !important;
+            box-shadow: 0 4px 8px rgba(26, 54, 93, 0.15) !important;
+            transform: translateY(-2px) !important;
+        }
+        
+        .vect-product-name {
+            color: var(--corp-text) !important;
+            font-weight: 600 !important;
+        }
+        
+        .vect-product-price {
+            color: var(--corp-primary) !important;
+            font-weight: 700 !important;
+        }
+        
+        /* Sidebar Cart */
+        .vect-sidebar {
+            background: white !important;
+            border-left: 3px solid var(--corp-primary) !important;
+            width: 400px !important;
+        }
+        
+        .vect-cart-header {
+            background: var(--corp-primary) !important;
+            color: white !important;
+            padding: 16px !important;
+            font-weight: 600 !important;
+        }
+        
+        .vect-cart-count {
+            background: var(--corp-secondary) !important;
+            color: white !important;
+            padding: 4px 8px !important;
+        }
+        
+        /* Cart Items */
+        .vect-cart-item {
+            background: var(--corp-surface) !important;
+            border: 1px solid var(--corp-primary) !important;
+            margin-bottom: 12px !important;
+            padding: 16px !important;
+        }
+        
+        /* Buttons */
+        .vect-btn,
+        .vect-quantity-btn {
+            background: var(--corp-primary) !important;
+            color: white !important;
+            border: 2px solid var(--corp-primary) !important;
+            padding: 8px 16px !important;
+            font-weight: 600 !important;
+            min-height: 44px !important;
+            cursor: pointer !important;
+            transition: all 0.2s ease !important;
+        }
+        
+        .vect-btn:hover,
+        .vect-quantity-btn:hover {
+            background: var(--corp-secondary) !important;
+            border-color: var(--corp-secondary) !important;
+        }
+        
+        .vect-quantity-value {
+            background: white !important;
+            border: 2px solid var(--corp-primary) !important;
+            color: var(--corp-text) !important;
+            width: 60px !important;
+            text-align: center !important;
+            font-weight: 600 !important;
+            min-height: 44px !important;
+        }
+        
+        /* Search */
+        .vect-search-input {
+            border: 2px solid var(--corp-primary) !important;
+            background: white !important;
+            padding: 12px 16px !important;
+            min-height: 44px !important;
+        }
+        
+        .vect-search-input:focus {
+            border-color: var(--corp-secondary) !important;
+            outline: none !important;
+        }
+        
+        /* Cart Summary */
+        .vect-cart-summary {
+            background: var(--corp-surface) !important;
+            border-top: 2px solid var(--corp-primary) !important;
+            padding: 16px !important;
+        }
+        
+        /* Order Actions */
+        .vect-order-actions {
+            background: var(--corp-primary) !important;
+            padding: 16px !important;
+            display: flex !important;
+            gap: 12px !important;
+        }
+        
+        .vect-clear-btn {
+            background: var(--corp-accent) !important;
+            border-color: var(--corp-accent) !important;
+            color: white !important;
+            flex: 1 !important;
+        }
+        
+        .vect-clear-btn:hover {
+            background: #4a5568 !important;
+            border-color: #4a5568 !important;
+        }
+        
+        .vect-checkout-btn,
+        .vect-confirm-order-btn {
+            background: var(--corp-secondary) !important;
+            border-color: var(--corp-secondary) !important;
+            color: white !important;
+            flex: 2 !important;
+        }
+        
+        .vect-checkout-btn:hover,
+        .vect-confirm-order-btn:hover {
+            background: #c53030 !important;
+            border-color: #c53030 !important;
+        }
+        
+        .vect-clear-btn:disabled,
+        .vect-checkout-btn:disabled {
+            background: #a0aec0 !important;
+            border-color: #a0aec0 !important;
+            color: #718096 !important;
+            cursor: not-allowed !important;
+            transform: none !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading" class="loading-screen">
+        <div class="logo">🛒</div>
+        <h1 class="app-name">Angular Corporate</h1>
+        <p class="app-tagline">Professional Design for Touchscreens</p>
+        <div class="loading-spinner"></div>
+        <div class="version">v2.0.0-angular</div>
+    </div>
+    
+    <!-- Main Application -->
+    <div id="app"></div>
+
+    <!-- Application Script -->
+    <script type="module">
+        let app;
+        
+        async function initializeApp() {
+            try {
+                console.log('🎨 Starting Angular Corporate Design Variant...');
+                console.log('📱 Optimized for 1366x768 touchscreen displays');
+                
+                const { default: VectisApp } = await import('./js/main.js');
+                app = new VectisApp();
+                await app.init();
+                
+                console.log('✅ Angular Corporate variant loaded successfully!');
+                
+                // Hide loading screen
+                document.getElementById('loading').style.display = 'none';
+                
+            } catch (error) {
+                console.error('❌ Failed to initialize Angular Corporate variant:', error);
+                document.getElementById('loading').style.display = 'none';
+            }
+        }
+        
+        // Initialize when DOM is loaded
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeApp);
+        } else {
+            initializeApp();
+        }
+        
+        // Global error handler
+        window.addEventListener('error', (event) => {
+            console.error('Global error in Angular Corporate variant:', event.error);
+        });
+    </script>
+</body>
+</html>
